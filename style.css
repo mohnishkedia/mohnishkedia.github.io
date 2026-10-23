@@ -1,0 +1,242 @@
+/* =====================================================================
+   STYLE.CSS  -  how your website LOOKS (colours, fonts, spacing)
+   Your words live in index.html. This file is only the design.
+
+   EASIEST WAY TO CHANGE COLOURS:
+   Open index.html and change the word in  <body class="theme-dark">
+   to one of:  theme-dark   theme-light   theme-forest   theme-warm
+   You do not need to touch this file for that.
+
+   WANT YOUR OWN COLOURS?
+   Find the theme you use below (e.g. "THEME: DARK") and change the
+   colour codes (they look like #4ea1d3). Only change what comes after
+   the colon and before the semicolon. Handy colour picker:
+   https://htmlcolorcodes.com
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   THEME: DARK  (default - this is your original look)
+   --------------------------------------------------------------------- */
+body.theme-dark {
+  --bg:           #0f1419;   /* page background */
+  --panel:        #161d26;   /* mobile menu background */
+  --card:         #1a232e;   /* boxes / cards background */
+  --ink:          #e7edf3;   /* main text */
+  --muted:        #9fb0c0;   /* softer grey text */
+  --accent:       #4ea1d3;   /* main highlight colour (links, bars, buttons) */
+  --accent-hover: #6fb6e0;   /* button colour when the mouse is over it */
+  --accent2:      #7bd389;   /* second highlight (job titles, years) */
+  --on-accent:    #06121b;   /* text colour written ON the main button */
+  --line:         #243141;   /* thin divider lines and borders */
+  --badge-bg:     #12202b;   /* small badge background */
+  --nav-bg:       rgba(15,20,25,.92);  /* top bar background */
+}
+
+/* ---------------------------------------------------------------------
+   THEME: LIGHT  (white background, blue + green highlights)
+   --------------------------------------------------------------------- */
+body.theme-light {
+  --bg:           #f7f9fb;
+  --panel:        #ffffff;
+  --card:         #ffffff;
+  --ink:          #1b2530;
+  --muted:        #52606d;
+  --accent:       #1b6ca8;
+  --accent-hover: #14527f;
+  --accent2:      #2f7d4a;
+  --on-accent:    #ffffff;
+  --line:         #d9e1e8;
+  --badge-bg:     #eef4f9;
+  --nav-bg:       rgba(247,249,251,.94);
+}
+
+/* ---------------------------------------------------------------------
+   THEME: FOREST  (dark green)
+   --------------------------------------------------------------------- */
+body.theme-forest {
+  --bg:           #0e1512;
+  --panel:        #141d19;
+  --card:         #18241f;
+  --ink:          #e6efe9;
+  --muted:        #9db3a6;
+  --accent:       #5cc08a;
+  --accent-hover: #7fd3a6;
+  --accent2:      #e0b45c;
+  --on-accent:    #06150d;
+  --line:         #22332b;
+  --badge-bg:     #11201a;
+  --nav-bg:       rgba(14,21,18,.92);
+}
+
+/* ---------------------------------------------------------------------
+   THEME: WARM  (cream paper, plum highlights)
+   --------------------------------------------------------------------- */
+body.theme-warm {
+  --bg:           #faf6ef;
+  --panel:        #fffdf8;
+  --card:         #fffdf8;
+  --ink:          #2a2420;
+  --muted:        #6b6058;
+  --accent:       #8a2f4f;
+  --accent-hover: #6e2340;
+  --accent2:      #4a6b3a;
+  --on-accent:    #ffffff;
+  --line:         #e5dccd;
+  --badge-bg:     #f3ebde;
+  --nav-bg:       rgba(250,246,239,.94);
+}
+
+
+/* ---------------------------------------------------------------------
+   LAYOUT SETTINGS (safe to change)
+   --------------------------------------------------------------------- */
+:root {
+  --maxw: 920px;   /* how wide the content gets on a big screen */
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+/* =====================================================================
+   EVERYTHING BELOW IS THE DESIGN ENGINE.
+   You normally never need to edit below this line.
+   ===================================================================== */
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font);
+  line-height:1.65; font-size:16px;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+
+.wrap{
+  max-width:var(--maxw); margin:0 auto;
+  padding-left:max(22px, env(safe-area-inset-left));
+  padding-right:max(22px, env(safe-area-inset-right));
+}
+
+/* ----- Top bar ----- */
+header.nav{position:sticky; top:0; z-index:50; background:var(--nav-bg);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.nav-inner{display:flex; align-items:center; justify-content:space-between; height:60px}
+.brand{font-weight:700; letter-spacing:.3px}
+.brand span{color:var(--accent)}
+nav.links a{color:var(--muted); margin-left:20px; font-size:14px; font-weight:500}
+nav.links a:hover{color:var(--ink); text-decoration:none}
+.menu-toggle{
+  display:none; background:none; border:none; color:var(--ink);
+  font-size:24px; line-height:1; cursor:pointer;
+  width:44px; height:44px; margin-right:-10px;
+}
+
+/* ----- Top of page ----- */
+.hero{padding:70px 0 50px; border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(2rem,5vw,3rem); line-height:1.15; margin-bottom:10px}
+.hero .role{color:var(--accent2); font-weight:600; font-size:1.05rem; margin-bottom:18px}
+.hero p.lead{color:var(--muted); max-width:680px; font-size:1.08rem}
+.cta{margin-top:28px; display:flex; gap:12px; flex-wrap:wrap}
+.btn{display:inline-block; padding:12px 20px; border-radius:8px; font-weight:600; font-size:14px}
+.btn.primary{background:var(--accent); color:var(--on-accent)}
+.btn.primary:hover{background:var(--accent-hover); text-decoration:none}
+.btn.ghost{border:1px solid var(--line); color:var(--ink)}
+.btn.ghost:hover{border-color:var(--accent); text-decoration:none}
+
+section{padding:56px 0; border-bottom:1px solid var(--line); scroll-margin-top:60px}
+h2{font-size:1.5rem; margin-bottom:26px; display:flex; align-items:center; gap:12px}
+h2::before{content:""; flex:none; width:28px; height:3px; background:var(--accent); border-radius:2px}
+
+.about p{color:var(--muted); max-width:720px; margin-bottom:14px}
+.tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
+.tag{background:var(--card); border:1px solid var(--line); color:var(--ink);
+  padding:6px 13px; border-radius:20px; font-size:13px}
+
+/* ----- Research cards ----- */
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:18px}
+.card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px;
+  transition:transform .15s ease, border-color .15s ease}
+.card h3{font-size:1.05rem; margin-bottom:8px; color:var(--ink)}
+.card p{color:var(--muted); font-size:.94rem}
+
+/* ----- Timeline (education / positions) ----- */
+.timeline{position:relative; margin-left:8px; padding-left:26px; border-left:2px solid var(--line)}
+.tl-item{position:relative; margin-bottom:26px}
+.tl-item::before{content:""; position:absolute; left:-34px; top:5px; width:12px; height:12px;
+  background:var(--accent); border-radius:50%; border:2px solid var(--bg)}
+.tl-item .yr{color:var(--accent2); font-size:.82rem; font-weight:600; letter-spacing:.5px}
+.tl-item h3{font-size:1.02rem; margin:2px 0 3px}
+.tl-item p{color:var(--muted); font-size:.92rem}
+
+/* ----- Publications ----- */
+.pub{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--accent);
+  border-radius:8px; padding:16px 18px; margin-bottom:14px}
+.pub .meta{color:var(--muted); font-size:.85rem; margin-top:6px}
+.pub .venue{color:var(--accent2); font-weight:600}
+.badge{display:inline-block; background:var(--badge-bg); color:var(--accent); border:1px solid var(--line);
+  font-size:.72rem; padding:2px 8px; border-radius:10px; margin-top:8px; margin-right:6px}
+.subhead{color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:1.5px;
+  margin:26px 0 14px; font-weight:700}
+
+/* ----- Two columns ----- */
+.two{display:grid; grid-template-columns:1fr 1fr; gap:36px}
+ul.clean{list-style:none}
+ul.clean li{color:var(--muted); padding:7px 0; border-bottom:1px solid var(--line); font-size:.94rem}
+ul.clean li:last-child{border-bottom:none}
+ul.clean li strong{color:var(--ink)}
+
+/* ----- Contact ----- */
+.contact-intro{color:var(--muted); max-width:640px}
+.contact-grid{display:flex; flex-wrap:wrap; gap:14px; margin-top:10px}
+.contact-card{background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:16px 20px; flex:1; min-width:min(210px,100%)}
+.contact-card .lbl{color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:1px}
+.contact-card .val{font-size:.98rem; margin-top:4px; overflow-wrap:anywhere}
+
+footer{padding:34px 0; text-align:center; color:var(--muted); font-size:.86rem}
+
+/* Hover effects only on devices that have a mouse (avoids "sticky" hover on phones) */
+@media (hover:hover){
+  .card:hover{transform:translateY(-3px); border-color:var(--accent)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .card{transition:none}
+}
+
+/* =====================================================================
+   PHONES AND SMALL TABLETS
+   ===================================================================== */
+@media (max-width:760px){
+  .menu-toggle{display:block}
+  nav.links{
+    display:none; position:absolute; top:60px; left:0; right:0;
+    background:var(--panel); flex-direction:column;
+    padding:8px 22px 14px; border-bottom:1px solid var(--line);
+    box-shadow:0 12px 24px rgba(0,0,0,.18);
+  }
+  nav.links.open{display:flex}
+  nav.links a{margin:0; padding:13px 0; font-size:16px; border-bottom:1px solid var(--line)}
+  nav.links a:last-child{border-bottom:none}
+
+  .hero{padding:48px 0 38px}
+  section{padding:40px 0}
+  h2{font-size:1.35rem; margin-bottom:20px}
+  .two{grid-template-columns:1fr; gap:6px}
+}
+
+@media (max-width:480px){
+  body{font-size:15.5px}
+  .wrap{padding-left:max(18px, env(safe-area-inset-left)); padding-right:max(18px, env(safe-area-inset-right))}
+  nav.links{padding-left:18px; padding-right:18px}
+  .hero p.lead{font-size:1.02rem}
+  .cta .btn{flex:1 1 100%; text-align:center}
+  .card{padding:18px}
+  .pub{padding:14px 15px}
+  .timeline{padding-left:22px}
+  .tl-item::before{left:-30px}
+}
